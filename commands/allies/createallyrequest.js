@@ -129,11 +129,11 @@ exports.run = async(message, client, args) => {
     }
     await createAllyRequest(groupID);
 
-    //try {
-    //    await createAllyRequest(groupID);
-    //} catch {
-    //    return message.channel.send(embedMaker("Error", `There was an error while attempting to create an ally request to this group`));
-    //}
+    try {
+        await createAllyRequest(groupID);
+    } catch {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to create an ally request to this group`));
+    }
 
     message.channel.send(embedMaker("Success", `You have successfully created an ally request with the group with the id of ${groupID}`));
     createAllyRequestCoolDowns.add(message.author.id);
