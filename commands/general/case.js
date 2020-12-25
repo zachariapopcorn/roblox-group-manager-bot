@@ -23,6 +23,17 @@ exports.run = async(message, client, args) => {
         return embed;
     }
 
+    let isAllowed = false;
+    for(var i = 0; i < allowedRanks.length; i++) {
+        if(message.member.roles.cache.some(role => [allowedRanks[i]].includes(role.name))) {
+            isAllowed = true;
+        }
+    }
+
+    if(isAllowed == false) {
+        return message.channel.send(embedMaker('No permission', "You don't have permission to use this command!"));
+    }
+
     let caseNum = Number(args[0]);
     if(!caseNum) {
         return message.channel.send(embedMaker("No Case Number Supplied", `You didn't supply a case number for me get the information of`));
