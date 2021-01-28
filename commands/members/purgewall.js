@@ -114,8 +114,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await purgeWall(configFile.groupID, userID);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to purge this user's messages from the group wall`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to purge this user's messages from the group wall: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully purged's ${await roblox.getUsernameFromId(userID)}'s messages from the group wall`));
