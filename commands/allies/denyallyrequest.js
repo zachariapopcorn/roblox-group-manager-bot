@@ -130,8 +130,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await denyAllyRequest(groupID);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to deny the ally request of this group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to deny the ally request of this group: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully denied the ally request of the group with the id of ${groupID}`));

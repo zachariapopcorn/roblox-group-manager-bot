@@ -47,8 +47,8 @@ exports.run = async(message, client, args) => {
 
     try {
         r = await getAllies(configFile.groupID);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to get the allies of the group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to get the allies of the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     let allies = r.data.relatedGroups;

@@ -131,8 +131,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await createAllyRequest(groupID);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to create an ally request to this group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to create an ally request to this group: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully created an ally request with the group with the id of ${groupID}`));

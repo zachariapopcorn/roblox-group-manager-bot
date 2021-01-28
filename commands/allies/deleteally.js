@@ -130,8 +130,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await deleteAlly(groupID)
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to delete the ally from the group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to delete the ally from the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully deleted the ally with the group id of ${groupID}`));
