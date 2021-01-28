@@ -79,8 +79,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await setDescription(configFile.groupID, description);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to set the description of the group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to set the description of the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully set the group's description to **${description}**`));

@@ -93,8 +93,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await setLogo(configFile.groupID, fs.createReadStream(name));
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to set the logo of the group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to set the logo of the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     fs.unlinkSync(name);
