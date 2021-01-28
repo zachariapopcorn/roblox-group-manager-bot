@@ -111,8 +111,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await createSocialLink(configFile.groupID, title, type, url);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to create the social link for the group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to create the social link for the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully created a social link with the infomation supplied for the group`));

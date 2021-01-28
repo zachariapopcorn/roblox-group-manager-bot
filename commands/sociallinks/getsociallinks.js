@@ -54,8 +54,8 @@ exports.run = async(message, client, args) => {
 
     try {
         r = await getSocialLinks(configFile.groupID);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to get the group's social links`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to get the group's social links: ${err.response.data[0].userFacingMessage}`));
     }
 
     let socialLinks = r.data.data;

@@ -126,8 +126,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await deleteSocialLink(configFile.groupID, socialLinkID);
-    } catch {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to delete the social link for the group`));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to delete the social link for the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     message.channel.send(embedMaker("Success", `You have successfully delete the social link from the group`));
