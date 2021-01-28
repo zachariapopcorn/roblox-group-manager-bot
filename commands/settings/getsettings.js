@@ -53,7 +53,7 @@ exports.run = async(message, client, args) => {
     try {
         r = await getSettings(configFile.groupID);
     } catch (err) {
-        return message.channel.send(embedMaker("Error", `There was an error while attempting to get the group's settings`));
+        return message.channel.send(embedMaker("Error", `There was an error while attempting to get the group's settings: ${err.response.data[0].userFacingMessage}`));
     }
 
     let settings = JSON.stringify(r.data);

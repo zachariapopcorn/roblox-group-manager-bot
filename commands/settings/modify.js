@@ -88,8 +88,8 @@ exports.run = async(message, client, args) => {
 
     try {
         await set(configFile.groupID, setting, newValue);
-    } catch {
-        return message.channel.send(embedMaker("Error", "There was an error while attempting the change the settings of the group"));
+    } catch (err) {
+        return message.channel.send(embedMaker("Error", `There was an error while attempting the change the settings of the group: ${err.response.data[0].userFacingMessage}`));
     }
 
     return message.channel.send(embedMaker("Success", `You have successfully changed the setting **${setting}** to **${newValue}**`));
