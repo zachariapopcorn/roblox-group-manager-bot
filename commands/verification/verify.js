@@ -52,8 +52,8 @@ exports.run = async(message, client, args) => {
     if(msg !== "done") {
         return message.channel.send(embedMaker("Error", "It appears that you can't follow simple instructions, this verification request has been cancelled"));
     }
-    let statusOfUser = await roblox.getStatus(rbxID);
-    if(statusOfUser.indexOf(code) == -1) {
+    let blurbOfUser = await roblox.getBlurb(rbxID);
+    if(blurbOfUser.indexOf(code) == -1) {
         return message.channel.send(embedMaker("Error", `The code **${code}** isn't part of your Roblox status, this verification request has been cancelled`));
     }
 
