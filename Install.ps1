@@ -8,3 +8,4 @@ rd "Roblox Group Manager"
 Rename-Item -Path roblox-group-manager-bot-main -NewName "Roblox Group Manager"
 cd "Roblox Group Manager"
 npm install
+del .\Install.ps1
